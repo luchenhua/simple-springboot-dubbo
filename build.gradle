@@ -17,7 +17,7 @@ plugins {
 }
 
 jar {
-    baseName = "simple-springboot"
+    baseName = "simple-springboot-dubbo"
     version = "0.1.0"
 }
 
