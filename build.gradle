@@ -37,7 +37,8 @@ subprojects {
         compile(
                 'com.google.guava:guava:21.0',
                 'com.squareup.okhttp3:okhttp:3.6.0',
-                'org.springframework.boot:spring-boot-starter-web'
+                'org.springframework.boot:spring-boot-starter-web',
+                'io.dubbo.springboot:spring-boot-starter-dubbo:1.0.0'
         )
         testCompile(
                 'org.springframework.boot:spring-boot-starter-test',
