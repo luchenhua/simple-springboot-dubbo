@@ -1,60 +1,47 @@
-buildscript {
-    repositories {
-        mavenLocal()
-//        maven {
-//            url "http://10.61.1.1:8081/nexus/content/groups/public"
-//        }
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE"
-    }
-}
-
 plugins {
-    id "java"
-    id "idea"
-    id "eclipse"
-    id "org.springframework.boot" version "1.5.2.RELEASE"
-}
-
-jar {
-    baseName = "simple-springboot-dubbo"
-    version = "0.1.0"
+    id 'java'
+    id 'idea'
+    id 'eclipse'
 }
 
 allprojects {
-    apply plugin: 'java'
     group = 'com.wowoohr.sample'
     version = '1.0'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 }
 
-//subprojects {
-//    apply plugin: 'war'
-//    repositories {
-//        mavenCentral()
-//    }
-//    dependencies {
-//        compile "javax.servlet:servlet-api:2.5"
-//    }
-//}
+subprojects {
+    apply plugin: 'java'
+    // Java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
 
-repositories {
-    mavenLocal()
+    repositories {
+//        mavenLocal()
 //    maven {
-//        url "http://10.61.1.1:8081/nexus/content/groups/public"
+//        url 'http://10.61.1.1:8081/nexus/content/groups/public'
 //    }
-    mavenCentral()
-}
+        mavenCentral()
+    }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+    jar {
+        manifest {
+            attributes('Implementation-Title': 'Gradle')
+        }
+    }
 
-dependencies {
-    compileOnly "org.projectlombok:lombok:1.16.16"
-    compile "com.google.guava:guava:21.0"
-    compile "com.squareup.okhttp3:okhttp:3.6.0"
-    compile "org.springframework.boot:spring-boot-starter-web"
-    testCompile "org.springframework.boot:spring-boot-starter-test"
-    testCompile "com.squareup.okhttp3:mockwebserver:3.6.0"
+    dependencies {
+        compileOnly(
+                'org.projectlombok:lombok:1.16.16'
+        )
+        compile(
+                'com.google.guava:guava:21.0',
+                'com.squareup.okhttp3:okhttp:3.6.0',
+                'org.springframework.boot:spring-boot-starter-web'
+        )
+        testCompile(
+                'org.springframework.boot:spring-boot-starter-test',
+                'com.squareup.okhttp3:mockwebserver:3.6.0'
+        )
+    }
 }
