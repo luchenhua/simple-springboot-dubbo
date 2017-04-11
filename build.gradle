@@ -46,3 +46,15 @@ subprojects {
         )
     }
 }
+
+project(':consumer') {
+    dependencies {
+        compile project(':api')
+    }
+}
+
+project(':provider') {
+    dependencies {
+        compile project(':api')
+    }
+}
