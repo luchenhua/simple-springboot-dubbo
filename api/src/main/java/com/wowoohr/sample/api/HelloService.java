@@ -1,4 +1,4 @@
-package api;
+package com.wowoohr.sample.api;
 
 /**
  * Created by luchenhua on 11/04/2017.

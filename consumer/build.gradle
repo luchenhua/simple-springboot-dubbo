@@ -6,19 +6,18 @@ plugins {
 }
 
 jar {
-    baseName = "consumer"
+    baseName = "com.wowoohr.sample.consumer"
     version = "0.1.0"
 }
 
 dependencies {
-//    compile(
-//            "org.projectlombok:lombok:1.16.16",
-//            "com.google.guava:guava:21.0",
-//            "com.squareup.okhttp3:okhttp:3.6.0",
-//            "org.springframework.boot:spring-boot-starter-web"
-//    )
-//    testCompile(
-//            "org.springframework.boot:spring-boot-starter-test",
-//            "com.squareup.okhttp3:mockwebserver:3.6.0"
-//    )
+    compile(
+            project(":api"),
+            "com.squareup.okhttp3:okhttp:3.6.0",
+            "org.springframework.boot:spring-boot-starter-web"
+    )
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test",
+            "com.squareup.okhttp3:mockwebserver:3.6.0"
+    )
 }
